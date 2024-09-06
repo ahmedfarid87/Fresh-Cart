@@ -17,7 +17,8 @@ export default function Navbar() {
       <nav className="py-5 z-50 bg-gray-100 capitalize text-gray-500 md:fixed md:top-0 md:end-0 md:start-0">
         <div className="container mx-auto  flex flex-wrap md:flex-nowrap justify-between items-center md:space-x-2">
           <div className="logo">
-            <img src={logo} className="w-36" alt="logo" />
+            <NavLink to="/"><img src={logo} className="w-50" alt="logo" /></NavLink>
+            
           </div>
           <div
             onClick={() => setOpen(!open)}
@@ -35,11 +36,6 @@ export default function Navbar() {
             <div className="flex flex-col absolute left-14 my-6 md:my-2 md:static md:flex-row items-center md:space-x-2">
               {userData && (
                 <ul className="flex flex-col gap-4 md:flex-row  md:gap-2 justify-center  items-center md:space-x-2">
-                  <li>
-                    <NavLink onClick={() => setOpen(false)} to="">
-                      home
-                    </NavLink>
-                  </li>
                   <li>
                     <NavLink onClick={() => setOpen(false)} to="products">
                       products
@@ -83,7 +79,6 @@ export default function Navbar() {
               {userData ? (
                 <li>
                   <span
-                    className="cursor-pointer"
                     onClick={() => {
                       setOpen(false);
                       localStorage.removeItem("userToken");
@@ -91,19 +86,19 @@ export default function Navbar() {
                       navigate("login");
                       setTokenStatus(false);
                     }}
-                  >
+                    className="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     logout
                   </span>
                 </li>
               ) : (
                 <>
                   <li>
-                    <NavLink onClick={() => setOpen(false)} to="login">
+                    <NavLink onClick={() => setOpen(false)} className="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" to="login">
                       login
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink onClick={() => setOpen(false)} to="register">
+                    <NavLink onClick={() => setOpen(false)} className="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" to="register">
                       register
                     </NavLink>
                   </li>
